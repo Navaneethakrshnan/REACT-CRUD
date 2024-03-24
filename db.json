@@ -2,10 +2,10 @@
   "users": [
     {
       "id": "4",
-      "name": "Patricia Lebsack",
+      "name": "Isabel",
       "username": "Karianne",
-      "email": "Julianne. OConner@kory.org",
-      "phone": "493-170-9623 x156",
+      "email": "isabel@yahoo.com",
+      "phone": "8746747884",
       "website": "kale.biz"
     },
     {
@@ -55,6 +55,18 @@
       "email": "Rey. Padberg@karina.biz",
       "phone": "024-648-3804",
       "website": "ambrose.net"
+    },
+    {
+      "id": "9ccf",
+      "name": "Navaneethakrishnan",
+      "email": "navaneethak381@gamail.com",
+      "phone": "9080359993"
+    },
+    {
+      "id": "abdb",
+      "name": "Pre",
+      "email": "Pre@gmail.com",
+      "phone": "9080359997"
     }
   ]
 }

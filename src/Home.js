@@ -26,7 +26,7 @@ function Home() {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-100 ">
+    <div className="d-flex flex-column justify-content-center align-items-center vh-100">
       <h1>List of Users</h1>
       <div
         className="w-75 rounded border shadow p-3"
@@ -39,7 +39,7 @@ function Home() {
         <div className="d-flex justify-content-end">
           <Link
             to="/create"
-            className="btn"
+            className="btn fw-medium"
             style={{ backgroundColor: "#637A9F", color: "#fff" }}
           >
             Add ➕
@@ -48,37 +48,37 @@ function Home() {
         <table className="table table-striped rounded-2 p-4">
           <thead>
             <tr>
-              <th className="g-col-6">ID</th>
-              <th className="g-col-6">NAME</th>
-              <th className="g-col-6">EMAIL</th>
-              <th>PHONE</th>
-              <th>ACTION</th>
+              {/* <th className="g-col-6">ID</th> */}
+              <th className="text-center">NAME</th>
+              <th className="text-center">EMAIL</th>
+              <th className="text-center">PHONE</th>
+              <th className="text-center">ACTION</th>
             </tr>
           </thead>
           <tbody>
             {data.map((d, i) => (
               <tr key={i}>
-                <td>{d.id}</td>
-                <td>{d.name}</td>
-                <td>{d.email}</td>
-                <td>{d.phone}</td>
-                <td>
+                {/* <td>{d.id}</td> */}
+                <td className="text-center">{d.name}</td>
+                <td className="text-center">{d.email}</td>
+                <td className="text-center">{d.phone}</td>
+                <td className="text-center">
                   <Link
                     to={`/read/${d.id}`}
-                    className="btn btn-sm me-3"
+                    className="btn btn-sm me-3 fw-medium"
                     style={{ backgroundColor: "#fcd34d" }}
                   >
                     Read
                   </Link>
                   <Link
                     to={`/update/${d.id}`}
-                    className="btn btn-sm btn-dark me-3"
+                    className="btn btn-sm btn-dark me-3 fw-medium"
                   >
                     Edit
                   </Link>
                   <button
                     onClick={(e) => handleDelete(d.id)}
-                    className="btn btn-sm btn-danger"
+                    className="btn btn-sm btn-danger fw-medium"
                   >
                     Delete
                   </button>
