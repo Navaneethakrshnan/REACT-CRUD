@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -11,12 +12,29 @@ function Home() {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm("Would you like to Delete");
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:3000/users/" + id)
+        .then((res) => {
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-100 ">
       <h1>List of Users</h1>
       <div
         className="w-75 rounded border shadow p-3"
-        style={{ backgroundColor: "#fff" }}
+        style={{
+          backgroundColor: "#fff",
+          height: "500px",
+          overflowY: "scroll",
+        }}
       >
         <div className="d-flex justify-content-end">
           <Link
@@ -45,14 +63,25 @@ function Home() {
                 <td>{d.email}</td>
                 <td>{d.phone}</td>
                 <td>
-                  <button
+                  <Link
+                    to={`/read/${d.id}`}
                     className="btn btn-sm me-3"
                     style={{ backgroundColor: "#fcd34d" }}
                   >
                     Read
+                  </Link>
+                  <Link
+                    to={`/update/${d.id}`}
+                    className="btn btn-sm btn-dark me-3"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={(e) => handleDelete(d.id)}
+                    className="btn btn-sm btn-danger"
+                  >
+                    Delete
                   </button>
-                  <button className="btn btn-sm btn-dark me-3">Edit</button>
-                  <button className="btn btn-sm btn-danger">Delete</button>
                 </td>
               </tr>
             ))}
